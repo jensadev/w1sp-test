@@ -1,0 +1,10 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<main class="container">
+    <h1>{{title}}</h1>
+    <p>Här kan du skriva en hälsning i form av en query parameter, använd name och message.</p>
+    <h2>Hejsan {{name}}</h2>
+    <p>{{message}}</p>
+</main>
+{% endblock %}

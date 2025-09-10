@@ -28,14 +28,13 @@ app.get("/about", (req, res) => {
 
 app.get("/greeting", (req, res) => {
     console.log(req.query)
-    res.send(`Hejsan ${req.query.name}, ${req.query.message}`)
+    // res.send(`Hejsan ${req.query.name}, ${req.query.message}`)
+    res.render("greeting.njk", {
+        title: "Hälsningssida",
+        name: req.query.name,
+        message: req.query.message
+    })
 })
-
-
-// Skriv en ny route, till about sidan
-// skapa about sidan, som en njk templat
-// på about sidan, ska det finnas en länk till er github, 
-// en bild och en text om att detta är ett skolarbete
 
 app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000")

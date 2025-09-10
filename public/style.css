@@ -7,3 +7,10 @@ body {
     max-width: 56rem;
     margin-inline: auto;
 }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+}
