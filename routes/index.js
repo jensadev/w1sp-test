@@ -29,7 +29,7 @@ router.get("/greeting", (req, res) => {
 })
 
 router.get("/movies", (req, res) => {
-    const movies = JSON.parse(fs.readFileSync("./data/movies.json"))
+    const {movies} = JSON.parse(fs.readFileSync("./data/movies.json"))
     res.json(movies)
 })
 
