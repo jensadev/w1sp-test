@@ -1,5 +1,5 @@
 import express from "express"
-import fs from "fs"
+import fs, { read } from "fs"
 
 const router = express.Router()
 
@@ -28,9 +28,28 @@ router.get("/greeting", (req, res) => {
     })
 })
 
+const {movies} = JSON.parse(fs.readFileSync("./data/movies.json"))
+
 router.get("/movies", (req, res) => {
-    const {movies} = JSON.parse(fs.readFileSync("./data/movies.json"))
-    res.json(movies)
+    // res.json(movies)
+    res.render("movies.njk", {
+        title: "Alla filmer",
+        movies
+    })
+})
+
+router.get("/movies/:id", (req, res) => {
+    console.log(req.params)
+    const movie = movies.find(m => m.id === +req.params.id)
+    if (movie) {
+        // res.json(movie)
+        res.render("movie.njk", {
+            title: movie.title,
+            movie
+        })
+    } else {
+        res.status(404).json({error: "Movie not found"})
+    }
 })
 
 export default router

@@ -1,0 +1,15 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<main class="container">
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <h1><a href="/movies/{{ movie.id }}">{{ movie.title }}</a></h1>
+            <p>{{ movie.director }}</p>
+            <p>{{ movie.year }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}
